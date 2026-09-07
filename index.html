@@ -1,48 +1,1064 @@
-<!doctype html>
-<html lang="en" class="scroll-smooth">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#070914">
-  <meta name="description" content="Discover apps, games, software, AI tools, financial services, deals, templates and digital products.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23070914'/%3E%3Cpath d='M23 70 50 18l27 52-27-13z' fill='%2360a5fa'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            ink: '#070914',
-            panel: '#0d1222',
-            line: 'rgba(255,255,255,.10)',
-            brand: '#60a5fa',
-            accent: '#a78bfa'
-          },
-          boxShadow: {
-            glow: '0 0 40px rgba(96,165,250,.14)',
-            glow2: '0 0 55px rgba(167,139,250,.13)'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nexus | Digital Superstore & Discovery</title>
+    <meta name="description" content="Discover top apps, software, financial tools, and digital assets.">
+    <meta name="theme-color" content="#030712"> <!-- gray-950 -->
+    
+    <!-- Dynamic SEO Meta Tags Placeholder (Populated by JS) -->
+    <meta property="og:title" id="meta-og-title" content="Nexus | Digital Superstore">
+    <meta property="og:description" id="meta-og-desc" content="Discover top apps, software, financial tools, and digital assets.">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- JSON-LD Placeholder -->
+    <script type="application/ld+json" id="schema-markup">{}</script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons for elegant UI -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' },
+                        glass: { dark: 'rgba(17, 24, 39, 0.7)', light: 'rgba(255, 255, 255, 0.7)' }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'slide-up': 'slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } }
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/styles.css">
-  <title>NovaStore — Digital Discovery Superstore</title>
+    </script>
+
+    <style>
+        /* Import Inter Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* Core Resets & Security Deterrence */
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: none;
+        }
+
+        .security-select-none {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Allow selection in inputs */
+        input, textarea, .allow-select {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+        }
+
+        /* Hide scrollbars but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .dark .glass-header {
+            background: rgba(3, 7, 18, 0.85); /* gray-950 w/ opacity */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Page Transition Container */
+        #view-container {
+            transition: opacity 0.2s ease-in-out;
+        }
+        .fade-out { opacity: 0; }
+        
+        /* Line clamp utilities */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-ink text-slate-100 antialiased">
-  <div id="app"></div>
-  <noscript>
-    <div class="mx-auto max-w-3xl px-6 py-16 text-center">
-      <h1 class="text-3xl font-bold">NovaStore</h1>
-      <p class="mt-3 text-slate-400">JavaScript is required to use this digital discovery platform.</p>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 font-sans security-select-none antialiased min-h-screen flex flex-col">
+
+    <!-- App Shell -->
+    <div id="app" class="flex flex-col min-h-screen">
+        
+        <!-- Header / Navigation -->
+        <header class="fixed top-0 w-full z-50 glass-header transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="router.navigate('/')">
+                    <i class="ph-fill ph-planet text-3xl text-primary-500"></i>
+                    <span class="text-xl font-bold tracking-tight">Nexus</span>
+                </div>
+
+                <!-- Desktop Search -->
+                <div class="hidden md:flex flex-1 max-w-2xl mx-8 relative group">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="desktop-search" class="w-full bg-gray-100 dark:bg-gray-900 border border-transparent dark:border-gray-800 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all glass-panel" placeholder="Search apps, cards, software, tools...">
+                    
+                    <!-- Search Results Dropdown -->
+                    <div id="search-results-dropdown" class="absolute top-full left-0 w-full mt-2 glass-panel rounded-2xl shadow-2xl overflow-hidden hidden flex-col max-h-96 overflow-y-auto z-50 animate-fade-in">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle Theme">
+                        <i class="ph ph-sun text-xl hidden dark:block"></i>
+                        <i class="ph ph-moon text-xl block dark:hidden"></i>
+                    </button>
+                    <!-- Desktop Nav Links -->
+                    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                        <a href="#/explore" class="hover:text-primary-500 transition-colors">Explore</a>
+                        <a href="#/saved" class="hover:text-primary-500 transition-colors flex items-center gap-1">
+                            <i class="ph ph-bookmark-simple"></i> Saved
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area (Dynamic Routing Target) -->
+        <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pb-8 relative">
+            <div id="view-container" class="w-full h-full animate-fade-in">
+                <!-- Content injected here by router -->
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="md:hidden fixed bottom-0 w-full glass-header border-t border-gray-200 dark:border-gray-800 z-50 pb-safe">
+            <div class="flex justify-around items-center h-16">
+                <a href="#/" class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors active-nav">
+                    <i class="ph ph-house text-2xl"></i>
+                    <span class="text-[10px] font-medium">Home</span>
+                </a>
+                <a href="#/explore" class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400 hover:text-primary-500 transition-colors">
+                    <i class="ph ph-compass text-2xl"></i>
+                    <span class="text-[10px] font-medium">Explore</span>
+                </a>
+                <button id="mobile-search-trigger" class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400 hover:text-primary-500 transition-colors">
+                    <i class="ph ph-magnifying-glass text-2xl"></i>
+                    <span class="text-[10px] font-medium">Search</span>
+                </button>
+                <a href="#/saved" class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400 hover:text-primary-500 transition-colors">
+                    <i class="ph ph-bookmark-simple text-2xl"></i>
+                    <span class="text-[10px] font-medium">Saved</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Mobile Fullscreen Search Overlay -->
+        <div id="mobile-search-overlay" class="fixed inset-0 bg-gray-50 dark:bg-gray-950 z-[60] hidden flex-col transition-transform duration-300 transform translate-y-full">
+            <div class="flex items-center p-4 border-b border-gray-200 dark:border-gray-800">
+                <button id="close-mobile-search" class="p-2 mr-2">
+                    <i class="ph ph-arrow-left text-xl"></i>
+                </button>
+                <input type="text" id="mobile-search-input" class="flex-1 bg-transparent border-none focus:outline-none text-lg" placeholder="Search...">
+            </div>
+            <div id="mobile-search-results" class="flex-1 overflow-y-auto p-4">
+                <!-- Results here -->
+            </div>
+        </div>
+
+        <!-- Toast Notifications Container -->
+        <div id="toast-container" class="fixed bottom-20 md:bottom-8 right-4 md:right-8 z-50 flex flex-col gap-2"></div>
+
     </div>
-  </noscript>
-  <script src="/data.js"></script>
-  <script src="/app.js" defer></script>
+
+<script>
+/**
+ * ARCHITECTURE: MODULE - DATA
+ * Simulating a backend database structure for various categories.
+ */
+const db = {
+    categories: [
+        { id: 'apps', name: 'Apps', icon: 'ph-app-window', color: 'bg-blue-500' },
+        { id: 'finance', name: 'Finance & Banks', icon: 'ph-bank', color: 'bg-emerald-500' },
+        { id: 'ai-tools', name: 'AI Tools', icon: 'ph-robot', color: 'bg-purple-500' },
+        { id: 'software', name: 'Software', icon: 'ph-code', color: 'bg-orange-500' },
+        { id: 'templates', name: 'Templates', icon: 'ph-file-code', color: 'bg-pink-500' },
+        { id: 'games', name: 'Games', icon: 'ph-game-controller', color: 'bg-red-500' }
+    ],
+    tags: ['Productivity', 'Design', 'Development', 'Credit Card', 'Crypto', 'Utility', 'Creative'],
+    products: [
+        // Category: Apps
+        {
+            id: 'taskmaster-pro', category: 'apps', name: 'TaskMaster Pro',
+            tagline: 'The ultimate productivity suite for professionals.',
+            desc: 'Organize your life, manage projects, and collaborate with teams seamlessly. Features include AI-driven task prioritization, Kanban boards, and deep calendar integrations.',
+            price: '$4.99/mo', type: 'Subscription', rating: 4.8, reviews: 12450,
+            image: 'https://placehold.co/400x400/2563eb/ffffff?text=TM',
+            tags: ['Productivity', 'Utility'], url: '#/product/taskmaster-pro',
+            pros: ['Intuitive UI', 'AI features', 'Cross-platform'], cons: ['Steep learning curve for advanced features']
+        },
+        {
+            id: 'zen-meditate', category: 'apps', name: 'Zen Meditate',
+            tagline: 'Find your inner peace daily.',
+            desc: 'Guided meditations, sleep sounds, and daily mindfulness exercises to help you reduce stress and improve focus.',
+            price: 'Free', type: 'Freemium', rating: 4.9, reviews: 8900,
+            image: 'https://placehold.co/400x400/10b981/ffffff?text=ZM',
+            tags: ['Health', 'Utility'], url: '#/product/zen-meditate',
+            pros: ['Vast library', 'Beautiful interface'], cons: ['Premium features are expensive']
+        },
+        // Category: Finance
+        {
+            id: 'sapphire-reserve', category: 'finance', name: 'Sapphire Reserve Edge',
+            tagline: 'Premium travel rewards credit card.',
+            desc: 'Earn 3x points on dining and travel worldwide. Includes $300 annual travel credit and airport lounge access. Terms apply.',
+            price: '$550/yr', type: 'Credit Card', rating: 4.7, reviews: 5600,
+            image: 'https://placehold.co/400x400/1e293b/ffffff?text=Card',
+            tags: ['Credit Card', 'Travel'], url: '#/product/sapphire-reserve',
+            pros: ['High rewards rate', 'Premium perks', 'Travel insurance'], cons: ['High annual fee', 'Excellent credit required'],
+            disclaimer: 'Information provided is for educational purposes. Consult a financial advisor.'
+        },
+        {
+            id: 'nova-bank', category: 'finance', name: 'Nova Digital Bank',
+            tagline: 'Banking with zero fees and high yield.',
+            desc: 'A modern digital checking and savings account offering 4.5% APY on savings with no hidden fees or minimum balances.',
+            price: 'Free', type: 'Bank Account', rating: 4.5, reviews: 12000,
+            image: 'https://placehold.co/400x400/0ea5e9/ffffff?text=Nova',
+            tags: ['Banking', 'Savings'], url: '#/product/nova-bank',
+            pros: ['High APY', 'No fees', 'Great mobile app'], cons: ['No physical branches', 'Cash deposits are hard']
+        },
+        // Category: AI Tools
+        {
+            id: 'neurowrite', category: 'ai-tools', name: 'NeuroWrite AI',
+            tagline: 'Generate marketing copy in seconds.',
+            desc: 'Advanced language model tuned specifically for marketers. Create blog posts, ad copy, and social media content effortlessly.',
+            price: '$29/mo', type: 'SaaS', rating: 4.6, reviews: 3200,
+            image: 'https://placehold.co/400x400/8b5cf6/ffffff?text=NW',
+            tags: ['Creative', 'Productivity'], url: '#/product/neurowrite',
+            pros: ['Fast generation', 'Multiple tones', 'SEO tools built-in'], cons: ['Can hallucinate facts occasionally']
+        },
+        // Category: Software
+        {
+            id: 'codebuilder', category: 'software', name: 'CodeBuilder IDE',
+            tagline: 'Lightweight, fast, customizable IDE.',
+            desc: 'Built for the modern web developer. Supports all major languages, features integrated terminal, and a massive extension marketplace.',
+            price: 'Free', type: 'Open Source', rating: 4.9, reviews: 45000,
+            image: 'https://placehold.co/400x400/f97316/ffffff?text=CB',
+            tags: ['Development', 'Utility'], url: '#/product/codebuilder',
+            pros: ['Incredibly fast', 'Huge ecosystem', 'Free'], cons: ['Requires setup for complex workflows']
+        },
+        // Category: Templates
+        {
+            id: 'dash-admin-pro', category: 'templates', name: 'DashAdmin Pro',
+            tagline: 'Next-gen React admin dashboard template.',
+            desc: 'Speed up your SaaS development with this comprehensive UI kit. Includes hundreds of components, charts, and pages.',
+            price: '$49', type: 'One-time', rating: 4.8, reviews: 850,
+            image: 'https://placehold.co/400x400/ec4899/ffffff?text=DA',
+            tags: ['Design', 'Development'], url: '#/product/dash-admin-pro',
+            pros: ['Clean code', 'Dark mode ready', 'Figma files included'], cons: ['React only']
+        }
+    ]
+};
+
+// Map for Smart Discover Keyword matching
+const smartDiscoverMap = {
+    'loan': 'finance', 'credit': 'finance', 'bank': 'finance', 'money': 'finance',
+    'code': 'software', 'dev': 'software', 'ide': 'software',
+    'chat': 'ai-tools', 'generate': 'ai-tools', 'bot': 'ai-tools',
+    'game': 'games', 'play': 'games',
+    'design': 'templates', 'ui': 'templates'
+};
+
+/**
+ * ARCHITECTURE: MODULE - STATE & UTILS
+ */
+const state = {
+    saved: JSON.parse(localStorage.getItem('nexus_saved')) || [],
+    history: JSON.parse(localStorage.getItem('nexus_history')) || [],
+    theme: localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+};
+
+function saveState() {
+    localStorage.setItem('nexus_saved', JSON.stringify(state.saved));
+    localStorage.setItem('nexus_history', JSON.stringify(state.history));
+}
+
+function toggleSave(productId) {
+    const index = state.saved.indexOf(productId);
+    if (index === -1) {
+        state.saved.push(productId);
+        showToast('Saved to bookmarks', 'success');
+    } else {
+        state.saved.splice(index, 1);
+        showToast('Removed from bookmarks', 'info');
+    }
+    saveState();
+    // Re-render UI if needed, naive approach for simplicity: trigger hashchange
+    router.renderCurrent();
+}
+
+function addToHistory(productId) {
+    state.history = state.history.filter(id => id !== productId); // Remove if exists
+    state.history.unshift(productId); // Add to front
+    if (state.history.length > 20) state.history.pop(); // Limit to 20
+    saveState();
+}
+
+// Toast System
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    const colors = {
+        success: 'bg-emerald-500 text-white border-emerald-600',
+        info: 'bg-blue-500 text-white border-blue-600',
+        error: 'bg-red-500 text-white border-red-600'
+    };
+    
+    toast.className = `px-4 py-3 rounded-lg shadow-lg border ${colors[type]} animate-slide-up flex items-center gap-2 font-medium text-sm`;
+    toast.innerHTML = `
+        <i class="ph-fill ph-${type === 'success' ? 'check-circle' : type === 'error' ? 'warning-circle' : 'info'}"></i>
+        ${message}
+    `;
+    
+    container.appendChild(toast);
+    setTimeout(() => {
+        toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+/**
+ * ARCHITECTURE: MODULE - SECURITY & DETERRENCE
+ */
+function initSecurityLayer() {
+    // Prevent context menu (right click)
+    document.addEventListener('contextmenu', e => {
+        // Allow context menu on inputs
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+        }
+    });
+
+    // Intercept keyboard shortcuts
+    document.addEventListener('keydown', e => {
+        // Prevent F12, Ctrl+Shift+I/J/C, Ctrl+U
+        if (
+            e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && e.key.toUpperCase() === 'U') ||
+            (e.ctrlKey && e.key.toUpperCase() === 'S') // Prevent Save Page
+        ) {
+            e.preventDefault();
+            console.warn("Security policy: Action blocked.");
+        }
+
+        // Prevent Copy/Paste/Select All unless in an input field
+        if (e.ctrlKey && ['C', 'V', 'A'].includes(e.key.toUpperCase())) {
+            if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+            }
+        }
+    });
+}
+initSecurityLayer();
+
+/**
+ * ARCHITECTURE: MODULE - ROUTER & SEO
+ */
+const router = {
+    currentPath: '',
+    routes: {},
+    
+    add: function(pattern, handler) {
+        this.routes[pattern] = handler;
+    },
+    
+    navigate: function(path) {
+        window.location.hash = path;
+    },
+    
+    resolve: function() {
+        const hash = window.location.hash.slice(1) || '/';
+        this.currentPath = hash;
+        
+        // Match route
+        for (let pattern in this.routes) {
+            const regexPattern = pattern.replace(/:[^\s/]+/g, '([\\w-]+)');
+            const regex = new RegExp(`^${regexPattern}$`);
+            const match = hash.match(regex);
+            
+            if (match) {
+                // Transition effect
+                const container = document.getElementById('view-container');
+                container.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    const args = match.slice(1);
+                    this.routes[pattern].apply(this, args);
+                    
+                    // Update active nav state (Mobile)
+                    document.querySelectorAll('nav a').forEach(el => {
+                        el.classList.remove('text-primary-500', 'dark:text-primary-400');
+                        if (el.getAttribute('href') === `#${pattern}`) {
+                            el.classList.add('text-primary-500', 'dark:text-primary-400');
+                        }
+                    });
+
+                    window.scrollTo(0, 0);
+                    container.classList.remove('fade-out');
+                }, 200);
+                return;
+            }
+        }
+        
+        // 404 Fallback
+        this.render404();
+    },
+
+    renderCurrent: function() {
+        this.resolve(); // Re-render same route (useful for state changes)
+    },
+
+    render404: function() {
+        const html = `
+            <div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
+                <i class="ph-duotone ph-ghost text-6xl text-gray-400 mb-4"></i>
+                <h1 class="text-3xl font-bold mb-2">Page Not Found</h1>
+                <p class="text-gray-500 mb-6">The signal was lost in the nexus.</p>
+                <button onclick="router.navigate('/')" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-medium transition-colors">Return Home</button>
+            </div>
+        `;
+        document.getElementById('view-container').innerHTML = html;
+        updateSEO({ title: '404 - Not Found | Nexus' });
+    }
+};
+
+window.addEventListener('hashchange', () => router.resolve());
+window.addEventListener('load', () => router.resolve());
+
+function updateSEO({ title, description, url = window.location.href, type = 'WebSite', image, schema }) {
+    document.title = title || 'Nexus | Digital Superstore & Discovery';
+    
+    // Meta tags
+    document.getElementById('meta-og-title').content = title;
+    if(description) {
+        document.querySelector('meta[name="description"]').content = description;
+        document.getElementById('meta-og-desc').content = description;
+    }
+    
+    // JSON-LD Schema
+    const baseSchema = {
+        "@context": "https://schema.org",
+        "@type": type,
+        "name": title,
+        "url": url
+    };
+    
+    const finalSchema = schema ? { ...baseSchema, ...schema } : baseSchema;
+    document.getElementById('schema-markup').textContent = JSON.stringify(finalSchema);
+}
+
+/**
+ * ARCHITECTURE: MODULE - UI COMPONENTS
+ */
+function createProductCard(product) {
+    const isSaved = state.saved.includes(product.id);
+    return `
+        <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group cursor-pointer border border-gray-200 dark:border-gray-800 hover:border-primary-500/50 flex flex-col h-full relative" onclick="router.navigate('/product/${product.id}')">
+            <div class="relative aspect-[4/3] overflow-hidden bg-gray-50 dark:bg-gray-950 flex items-center justify-center p-4">
+                <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700 ease-out shadow-sm" loading="lazy">
+                
+                <!-- Overlay gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                <!-- Floating Badges -->
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                     <button onclick="event.stopPropagation(); toggleSave('${product.id}')" class="p-2 rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-md hover:bg-white dark:hover:bg-black transition-colors text-gray-900 dark:text-white shadow-sm border border-gray-200/50 dark:border-gray-700/50" aria-label="Save">
+                        <i class="ph${isSaved ? '-fill text-primary-500' : ''} ph-bookmark-simple text-sm"></i>
+                    </button>
+                </div>
+                <div class="absolute top-3 left-3">
+                    <span class="px-2.5 py-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 shadow-sm">
+                        ${db.categories.find(c=>c.id===product.category)?.name || 'Misc'}
+                    </span>
+                </div>
+                <div class="absolute bottom-3 left-3 bg-white/95 dark:bg-black/80 backdrop-blur-md text-gray-900 dark:text-white text-xs font-bold px-2 py-1.5 rounded-lg flex items-center gap-1.5 shadow-sm border border-gray-200 dark:border-gray-700/50">
+                    <i class="ph-fill ph-star text-yellow-500"></i>${product.rating}
+                </div>
+            </div>
+            
+            <div class="p-5 flex flex-col flex-1 bg-white dark:bg-gray-900">
+                <div class="flex justify-between items-start mb-2 gap-2">
+                    <h3 class="text-lg font-extrabold leading-tight text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">${product.name}</h3>
+                    <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-md whitespace-nowrap">${product.price}</span>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 mb-4 flex-1 leading-relaxed">${product.tagline}</p>
+                <div class="mt-auto flex flex-wrap gap-1.5">
+                    ${product.tags.slice(0, 3).map(tag => `<span class="px-2 py-1 text-[10px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md border border-gray-200 dark:border-gray-700">${tag}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function createCategoryRail(category) {
+    const categoryProducts = db.products.filter(p => p.category === category.id).slice(0, 5);
+    if (categoryProducts.length === 0) return ''; // Skip empty categories
+
+    return `
+        <div class="mb-10 animate-slide-up">
+            <div class="flex justify-between items-end mb-4">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <div class="p-1.5 rounded-lg ${category.color} text-white"><i class="${category.icon}"></i></div>
+                    ${category.name}
+                </h2>
+                <a href="#/category/${category.id}" class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline">View All</a>
+            </div>
+            <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-4 pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
+                ${categoryProducts.map(p => `
+                    <div class="snap-start w-64 sm:w-72 flex-shrink-0">
+                        ${createProductCard(p)}
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * ARCHITECTURE: MODULE - VIEWS
+ */
+router.add('/', function() {
+    let html = `
+        <!-- Hero Section (0 Gap & Tight Layout) -->
+        <div class="relative -mx-4 sm:mx-0 sm:rounded-3xl overflow-hidden mb-8 bg-gradient-to-br from-primary-900 via-gray-900 to-black text-white py-12 px-6 sm:px-10 shadow-lg">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30"></div>
+            <!-- Glowing accent -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 max-w-2xl flex flex-col gap-3">
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Discover the Best Digital Assets.</h1>
+                <p class="text-lg text-gray-300 font-medium max-w-lg mb-2">Curated software, apps, financial products, and templates to elevate your digital life.</p>
+                <button onclick="router.navigate('/explore')" class="w-max bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 rounded-xl font-bold transition-transform hover:scale-105 flex items-center gap-2 shadow-xl">
+                    Start Exploring <i class="ph-bold ph-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    `;
+
+    // Render Rails for top categories
+    db.categories.slice(0, 4).forEach(cat => {
+        html += createCategoryRail(cat);
+    });
+
+    document.getElementById('view-container').innerHTML = html;
+    updateSEO({ title: 'Nexus | Digital Superstore' });
+});
+
+router.add('/explore', function() {
+    let html = `
+        <div class="mb-8 flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Explore Categories</h1>
+                <p class="text-gray-500 dark:text-gray-400">Find exactly what you need across our diverse ecosystem.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            ${db.categories.map(c => `
+                <a href="#/category/${c.id}" class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:-translate-y-1 transition-transform group text-center">
+                    <div class="w-16 h-16 rounded-full ${c.color} text-white flex items-center justify-center text-3xl shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="${c.icon}"></i>
+                    </div>
+                    <span class="font-semibold text-lg">${c.name}</span>
+                </a>
+            `).join('')}
+        </div>
+    `;
+    document.getElementById('view-container').innerHTML = html;
+    updateSEO({ title: 'Explore Categories | Nexus' });
+});
+
+router.add('/category/:slug', function(slug) {
+    const category = db.categories.find(c => c.id === slug);
+    if (!category) return router.render404();
+
+    const products = db.products.filter(p => p.category === slug);
+    
+    let html = `
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <a href="#/" class="hover:text-primary-500"><i class="ph ph-house"></i></a>
+            <i class="ph ph-caret-right"></i>
+            <a href="#/explore" class="hover:text-primary-500">Explore</a>
+            <i class="ph ph-caret-right"></i>
+            <span class="text-gray-900 dark:text-gray-100 font-medium">${category.name}</span>
+        </div>
+
+        <div class="mb-8 flex items-center gap-4">
+            <div class="p-3 rounded-xl ${category.color} text-white text-2xl"><i class="${category.icon}"></i></div>
+            <h1 class="text-3xl font-bold">${category.name}</h1>
+            <span class="ml-auto text-sm bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded-full font-medium">${products.length} items</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            ${products.map(p => createProductCard(p)).join('')}
+            ${products.length === 0 ? '<p class="col-span-full text-center py-12 text-gray-500">No products found in this category yet.</p>' : ''}
+        </div>
+    `;
+    document.getElementById('view-container').innerHTML = html;
+    updateSEO({ title: `${category.name} | Nexus` });
+});
+
+router.add('/saved', function() {
+    const savedProducts = state.saved.map(id => db.products.find(p => p.id === id)).filter(Boolean);
+    
+    let html = `
+        <h1 class="text-3xl font-bold mb-2">Saved Items</h1>
+        <p class="text-gray-500 dark:text-gray-400 mb-8">Your personal collection of bookmarked digital assets.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            ${savedProducts.map(p => createProductCard(p)).join('')}
+            ${savedProducts.length === 0 ? `
+                <div class="col-span-full flex flex-col items-center justify-center py-20 text-center glass-panel rounded-2xl">
+                    <i class="ph-duotone ph-bookmark-simple text-6xl text-gray-300 mb-4"></i>
+                    <h2 class="text-xl font-semibold mb-2">Nothing saved yet</h2>
+                    <p class="text-gray-500 mb-4">Explore our catalog and click the bookmark icon to save items here.</p>
+                    <button onclick="router.navigate('/explore')" class="text-primary-500 font-medium hover:underline">Start Exploring</button>
+                </div>
+            ` : ''}
+        </div>
+    `;
+    document.getElementById('view-container').innerHTML = html;
+    updateSEO({ title: 'Saved Items | Nexus' });
+});
+
+router.add('/product/:id', function(id) {
+    const product = db.products.find(p => p.id === id);
+    if (!product) return router.render404();
+
+    const category = db.categories.find(c => c.id === product.category);
+    addToHistory(product.id);
+
+    // Get related products (same category, exclude current)
+    const related = db.products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    const isSaved = state.saved.includes(product.id);
+
+    const trending = db.products.filter(p => p.id !== product.id && p.category !== product.category).sort((a,b) => b.rating - a.rating).slice(0, 6);
+    const moreToExplore = db.products.filter(p => p.id !== product.id && !related.some(r => r.id === p.id) && !trending.some(t => t.id === p.id)).slice(0, 6);
+
+    let html = `
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
+            <a href="#/" class="hover:text-primary-500"><i class="ph ph-house"></i></a>
+            <i class="ph ph-caret-right"></i>
+            <a href="#/category/${category.id}" class="hover:text-primary-500 font-medium">${category.name}</a>
+            <i class="ph ph-caret-right"></i>
+            <span class="text-gray-900 dark:text-gray-100 font-semibold truncate max-w-[200px]">${product.name}</span>
+        </div>
+
+        <!-- Premium Product Showcase -->
+        <div class="bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-10 mb-12 shadow-sm border border-gray-200 dark:border-gray-800 relative overflow-hidden">
+            <!-- Background aesthetic blur -->
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-500/10 dark:bg-primary-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row gap-10 relative z-10">
+                <!-- Image & Stats -->
+                <div class="w-full md:w-5/12 flex-shrink-0">
+                    <div class="relative aspect-square rounded-2xl overflow-hidden bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 group">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    
+                    <!-- Quick Stats Grid -->
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1 flex items-center justify-center gap-1">
+                                ${product.rating} <i class="ph-fill ph-star text-yellow-500 text-xl"></i>
+                            </div>
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">${product.reviews.toLocaleString()} Reviews</div>
+                        </div>
+                        <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 text-center">
+                            <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1">${product.price === 'Free' ? 'Free' : product.price.split('/')[0]}</div>
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">${product.type}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Content Details -->
+                <div class="flex-1 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-4 flex-wrap">
+                        <span class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-lg text-xs font-extrabold uppercase tracking-wider border border-primary-100 dark:border-primary-800/50">${category.name}</span>
+                        ${product.tags.map(tag => `<span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-lg text-xs font-medium border border-gray-200 dark:border-gray-700">${tag}</span>`).join('')}
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight tracking-tight mb-4">${product.name}</h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-light mb-8 leading-relaxed">${product.tagline}</p>
+
+                    <div class="prose dark:prose-invert max-w-none mb-10 text-gray-600 dark:text-gray-400 text-lg">
+                        <p>${product.desc}</p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="mt-auto flex flex-col sm:flex-row gap-4">
+                        <button onclick="handleAction('${product.type}')" class="flex-1 bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40 flex justify-center items-center gap-3 text-lg group">
+                            ${getActionText(product.type)} <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <div class="flex gap-4">
+                            <button onclick="toggleSave('${product.id}')" class="flex-1 sm:flex-none sm:w-auto bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-6 rounded-xl transition-colors flex justify-center items-center gap-2 border border-gray-200 dark:border-gray-700">
+                                <i class="ph${isSaved ? '-fill text-primary-500' : ''} ph-bookmark-simple text-xl"></i> ${isSaved ? 'Saved' : 'Save'}
+                            </button>
+                            <button onclick="handleShare('${product.name}', '${window.location.href}')" class="flex-1 sm:flex-none sm:w-auto bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-semibold py-4 px-6 rounded-xl transition-colors flex justify-center items-center gap-2 border border-gray-200 dark:border-gray-700">
+                                <i class="ph-bold ph-share-network text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pros / Cons Sleek Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div class="bg-white dark:bg-gray-900 border border-emerald-100 dark:border-emerald-900/30 p-6 md:p-8 rounded-3xl shadow-sm">
+                <h4 class="font-extrabold text-xl text-emerald-800 dark:text-emerald-400 mb-6 flex items-center gap-3">
+                    <div class="p-2.5 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl"><i class="ph-bold ph-check text-emerald-600 dark:text-emerald-400"></i></div>
+                    Key Highlights
+                </h4>
+                <ul class="space-y-4 text-emerald-800 dark:text-emerald-200 font-medium">
+                    ${product.pros.map(pro => `<li class="flex items-start gap-3"><i class="ph-bold ph-plus mt-1 text-emerald-500 flex-shrink-0"></i> <span>${pro}</span></li>`).join('')}
+                </ul>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-red-100 dark:border-red-900/30 p-6 md:p-8 rounded-3xl shadow-sm">
+                <h4 class="font-extrabold text-xl text-red-800 dark:text-red-400 mb-6 flex items-center gap-3">
+                    <div class="p-2.5 bg-red-100 dark:bg-red-900/50 rounded-xl"><i class="ph-bold ph-warning text-red-600 dark:text-red-400"></i></div>
+                    Considerations
+                </h4>
+                <ul class="space-y-4 text-red-800 dark:text-red-200 font-medium">
+                    ${product.cons.map(con => `<li class="flex items-start gap-3"><i class="ph-bold ph-minus mt-1 text-red-500 flex-shrink-0"></i> <span>${con}</span></li>`).join('')}
+                </ul>
+            </div>
+        </div>
+
+        ${product.disclaimer ? `<div class="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-900/50 p-4 rounded-2xl text-sm text-yellow-800 dark:text-yellow-200 mb-12 flex items-start gap-3"><i class="ph-fill ph-info text-yellow-500 text-2xl flex-shrink-0"></i> <p class="font-medium">${product.disclaimer}</p></div>` : ''}
+
+        <!-- Related Products Area -->
+        ${related.length > 0 ? `
+            <div class="mt-16 flex justify-between items-end mb-6">
+                <h3 class="text-2xl font-extrabold tracking-tight">Similar Products</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+                ${related.map(p => createProductCard(p)).join('')}
+            </div>
+        ` : ''}
+
+        <!-- NEW SECTION 1: Trending Alternatives (Horizontal Scrolling) -->
+        ${trending.length > 0 ? `
+            <div class="mt-16 mb-10 animate-slide-up">
+                <div class="flex justify-between items-end mb-6">
+                    <h3 class="text-2xl font-extrabold tracking-tight">Trending Alternatives</h3>
+                </div>
+                <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+                    ${trending.map(p => `
+                        <div class="snap-start w-[280px] sm:w-[300px] flex-shrink-0">
+                            ${createProductCard(p)}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- NEW SECTION 2: Why Choose Flex Row (Flex Layout) -->
+        <div class="mt-16 mb-10 animate-slide-up" style="animation-delay: 0.1s;">
+            <h3 class="text-2xl font-extrabold tracking-tight mb-6">Why Choose ${product.name}?</h3>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-3xl flex items-start gap-4 hover:-translate-y-1 transition-transform shadow-sm group">
+                    <div class="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-2xl text-blue-500 group-hover:scale-110 transition-transform"><i class="ph-duotone ph-rocket-launch text-3xl"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">High Performance</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Optimized architecture ensures lightning-fast speed and reliability.</p>
+                    </div>
+                </div>
+                <div class="flex-1 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-3xl flex items-start gap-4 hover:-translate-y-1 transition-transform shadow-sm group">
+                    <div class="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl text-emerald-500 group-hover:scale-110 transition-transform"><i class="ph-duotone ph-shield-check text-3xl"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Secure & Trusted</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">Industry-leading standards to protect your data and privacy.</p>
+                    </div>
+                </div>
+                <div class="flex-1 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-3xl flex items-start gap-4 hover:-translate-y-1 transition-transform shadow-sm group">
+                    <div class="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-2xl text-purple-500 group-hover:scale-110 transition-transform"><i class="ph-duotone ph-headset text-3xl"></i></div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Premium Support</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">24/7 dedicated assistance whenever you need help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SECTION 3: More to Explore (Horizontal Scrolling) -->
+        ${moreToExplore.length > 0 ? `
+            <div class="mt-16 mb-16 animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="flex justify-between items-end mb-6">
+                    <h3 class="text-2xl font-extrabold tracking-tight">More to Explore</h3>
+                </div>
+                <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar gap-6 pb-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+                    ${moreToExplore.map(p => `
+                        <div class="snap-start w-[280px] sm:w-[300px] flex-shrink-0">
+                            ${createProductCard(p)}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        ` : ''}
+    `;
+
+    document.getElementById('view-container').innerHTML = html;
+
+    // Rich SEO Structured Data
+    updateSEO({
+        title: `${product.name} | Nexus`,
+        description: product.tagline,
+        type: 'Product',
+        schema: {
+            "description": product.desc,
+            "image": product.image,
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": product.price === 'Free' ? "0" : product.price.replace(/[^0-9.]/g, ''),
+                "availability": "https://schema.org/InStock"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": product.rating,
+                "reviewCount": product.reviews
+            }
+        }
+    });
+});
+
+function getActionText(type) {
+    if (['SaaS', 'Subscription', 'Freemium'].includes(type)) return 'Get Started';
+    if (['Credit Card', 'Bank Account'].includes(type)) return 'Apply Now';
+    if (['Open Source', 'Template'].includes(type)) return 'Download';
+    return 'Visit Site';
+}
+
+function handleAction(type) {
+    // Simulate external navigation
+    showToast(`Redirecting to secure external portal for ${type}...`, 'success');
+}
+
+async function handleShare(title, url) {
+    if (navigator.share) {
+        try {
+            await navigator.share({ title, url });
+        } catch (err) {
+            console.log('Share cancelled', err);
+        }
+    } else {
+        // Fallback copy to clipboard
+        try {
+            const input = document.createElement('input');
+            input.value = url;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast('Link copied to clipboard!', 'success');
+        } catch (e) {
+            showToast('Failed to copy link.', 'error');
+        }
+    }
+}
+
+/**
+ * ARCHITECTURE: MODULE - SEARCH & DISCOVER
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+function executeSearch(query) {
+    query = query.toLowerCase().trim();
+    if (!query) return { products: [], categoryHint: null };
+
+    // 1. Smart Discover Concept Mapping
+    let mappedCategory = null;
+    for (const [key, catId] of Object.entries(smartDiscoverMap)) {
+        if (query.includes(key)) {
+            mappedCategory = db.categories.find(c => c.id === catId);
+            break;
+        }
+    }
+
+    // 2. Direct Search
+    const results = db.products.filter(p => {
+        return p.name.toLowerCase().includes(query) ||
+               p.tags.some(t => t.toLowerCase().includes(query)) ||
+               p.category.toLowerCase().includes(query);
+    });
+
+    return { products: results, categoryHint: mappedCategory };
+}
+
+function renderSearchResults(query, containerId) {
+    const container = document.getElementById(containerId);
+    if (!query) {
+        container.classList.add('hidden');
+        return;
+    }
+
+    const { products, categoryHint } = executeSearch(query);
+    
+    let html = '';
+
+    if (categoryHint) {
+        html += `
+            <a href="#/category/${categoryHint.id}" class="flex items-center gap-3 p-3 bg-primary-50 dark:bg-primary-900/20 hover:bg-primary-100 dark:hover:bg-primary-900/40 border-b border-primary-100 dark:border-primary-900/50 transition-colors" onclick="hideSearch()">
+                <div class="${categoryHint.color} p-2 rounded-lg text-white"><i class="${categoryHint.icon}"></i></div>
+                <div>
+                    <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase">Smart Suggestion</span>
+                    <p class="font-medium text-gray-900 dark:text-gray-100">Browse all ${categoryHint.name}</p>
+                </div>
+                <i class="ph ph-arrow-right ml-auto text-primary-500"></i>
+            </a>
+        `;
+    }
+
+    if (products.length > 0) {
+        html += `<div class="py-2">`;
+        products.forEach(p => {
+            html += `
+                <a href="#/product/${p.id}" class="flex items-center gap-4 p-3 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" onclick="hideSearch()">
+                    <img src="${p.image}" class="w-12 h-12 rounded-lg object-cover bg-gray-200">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-semibold text-gray-900 dark:text-white truncate">${p.name}</h4>
+                        <p class="text-xs text-gray-500 truncate">${db.categories.find(c=>c.id===p.category)?.name}</p>
+                    </div>
+                </a>
+            `;
+        });
+        html += `</div>`;
+    } else {
+        html += `
+            <div class="p-8 text-center text-gray-500">
+                <i class="ph-duotone ph-magnifying-glass text-4xl mb-2"></i>
+                <p>No results found for "${query}"</p>
+            </div>
+        `;
+    }
+
+    container.innerHTML = html;
+    container.classList.remove('hidden');
+    container.classList.add('flex');
+}
+
+// Setup Desktop Search
+const desktopSearchInput = document.getElementById('desktop-search');
+desktopSearchInput.addEventListener('input', debounce((e) => {
+    renderSearchResults(e.target.value, 'search-results-dropdown');
+}, 300));
+desktopSearchInput.addEventListener('blur', () => {
+    // Delay hiding to allow clicks on results
+    setTimeout(() => document.getElementById('search-results-dropdown').classList.add('hidden'), 200);
+});
+desktopSearchInput.addEventListener('focus', (e) => {
+    if(e.target.value) renderSearchResults(e.target.value, 'search-results-dropdown');
+});
+
+// Setup Mobile Search Overlay
+const mobileSearchTrigger = document.getElementById('mobile-search-trigger');
+const mobileSearchOverlay = document.getElementById('mobile-search-overlay');
+const closeMobileSearch = document.getElementById('close-mobile-search');
+const mobileSearchInput = document.getElementById('mobile-search-input');
+
+mobileSearchTrigger.addEventListener('click', () => {
+    mobileSearchOverlay.classList.remove('hidden');
+    // slight delay for transition
+    setTimeout(() => {
+        mobileSearchOverlay.classList.remove('translate-y-full');
+        mobileSearchInput.focus();
+    }, 10);
+});
+
+closeMobileSearch.addEventListener('click', hideSearch);
+
+function hideSearch() {
+    mobileSearchOverlay.classList.add('translate-y-full');
+    setTimeout(() => {
+        mobileSearchOverlay.classList.add('hidden');
+        mobileSearchInput.value = '';
+        document.getElementById('mobile-search-results').innerHTML = '';
+    }, 300);
+}
+
+mobileSearchInput.addEventListener('input', debounce((e) => {
+    renderSearchResults(e.target.value, 'mobile-search-results');
+}, 300));
+
+/**
+ * ARCHITECTURE: MODULE - THEME
+ */
+const themeToggle = document.getElementById('theme-toggle');
+function applyTheme(t) {
+    if (t === 'dark') {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', t);
+    state.theme = t;
+}
+
+themeToggle.addEventListener('click', () => {
+    const newTheme = state.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+});
+// Apply initial
+applyTheme(state.theme);
+
+</script>
 </body>
 </html>
