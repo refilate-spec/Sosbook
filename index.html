@@ -640,6 +640,513 @@
     </div>
 
 </section>
+        <!-- ================= PREMIUM AD CARD ================= -->
+
+<div id="ads-container" class="w-full px-3 sm:px-4 my-4">
+
+    <!-- Main Ad -->
+    <div id="ads-card"
+        class="relative mx-auto w-full max-w-5xl overflow-hidden
+        rounded-2xl border border-blue-500/20
+        bg-white dark:bg-gray-950
+        shadow-lg shadow-blue-500/10
+        transition-all duration-300">
+
+        <!-- Sponsored -->
+        <div class="absolute left-3 top-3 z-20">
+            <span
+                class="rounded-full border border-gray-200
+                bg-white/90 px-2 py-1 text-[8px]
+                font-semibold uppercase tracking-wider
+                text-gray-500 backdrop-blur
+                dark:border-gray-700 dark:bg-gray-900/90
+                dark:text-gray-400">
+                Sponsored
+            </span>
+        </div>
+
+        <!-- Close Button -->
+        <button id="ads-close"
+            type="button"
+            aria-label="Close advertisement"
+            class="absolute right-3 top-3 z-30
+            flex h-8 w-8 items-center justify-center
+            rounded-full border border-gray-200
+            bg-white/90 text-gray-500 shadow-sm
+            backdrop-blur transition-all duration-200
+            hover:scale-105 hover:text-red-500
+            dark:border-gray-700 dark:bg-gray-900/90
+            dark:text-gray-300">
+
+            <i class="fa-solid fa-xmark text-sm"></i>
+
+        </button>
+
+        <!-- Clickable Ad -->
+        <a id="ads-link"
+            href="#"
+            target="_blank"
+            rel="nofollow sponsored noopener"
+            class="group flex min-h-[120px] items-center
+            gap-4 p-4 sm:min-h-[150px] sm:gap-6 sm:p-5">
+
+            <!-- Image -->
+            <div
+                class="h-20 w-20 shrink-0 overflow-hidden
+                rounded-xl bg-gradient-to-br
+                from-blue-500/10 via-purple-500/10
+                to-pink-500/10 sm:h-28 sm:w-28">
+
+                <img id="ads-image"
+                    src=""
+                    alt=""
+                    class="h-full w-full object-cover
+                    transition duration-500
+                    group-hover:scale-105">
+            </div>
+
+            <!-- Content -->
+            <div class="min-w-0 flex-1">
+
+                <!-- Badge + ID -->
+                <div class="mb-1 flex items-center gap-2">
+
+                    <span id="ads-badge"
+                        class="rounded-md bg-blue-500/10
+                        px-2 py-0.5 text-[9px] font-bold
+                        text-blue-600 dark:text-blue-400">
+                    </span>
+
+                    <span id="ads-id"
+                        class="text-[9px] text-gray-400">
+                    </span>
+
+                </div>
+
+                <!-- Title -->
+                <h3 id="ads-title"
+                    class="line-clamp-1 text-base font-bold
+                    text-gray-900 dark:text-white
+                    sm:text-lg">
+                </h3>
+
+                <!-- Description -->
+                <p id="ads-description"
+                    class="mt-1 line-clamp-2 text-xs
+                    leading-5 text-gray-500
+                    dark:text-gray-400 sm:text-sm">
+                </p>
+
+                <!-- Button -->
+                <div class="mt-3">
+
+                    <span id="ads-button"
+                        class="inline-flex items-center gap-2
+                        rounded-lg bg-gradient-to-r
+                        from-blue-600 via-blue-500 to-purple-600
+                        px-3 py-1.5 text-xs font-bold
+                        text-white shadow-sm
+                        transition-all duration-200
+                        group-hover:gap-3">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Desktop Arrow -->
+            <div
+                class="hidden h-9 w-9 shrink-0 items-center
+                justify-center rounded-full
+                bg-gray-100 text-gray-500
+                dark:bg-gray-800 dark:text-gray-300
+                sm:flex">
+
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+
+            </div>
+
+        </a>
+
+        <!-- Bottom Progress -->
+        <div
+            class="absolute bottom-0 left-0 h-[2px]
+            w-full bg-gray-100 dark:bg-gray-800">
+
+            <div id="ads-progress"
+                class="h-full w-0
+                bg-gradient-to-r from-blue-500
+                via-purple-500 to-pink-500">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Tiny Show Button -->
+    <button id="ads-show"
+        type="button"
+        class="mx-auto mt-1 hidden h-5
+        rounded-full border border-gray-300
+        bg-white px-2 text-[8px]
+        font-semibold text-gray-500
+        shadow-sm transition
+        hover:text-blue-500
+        dark:border-gray-700
+        dark:bg-gray-900
+        dark:text-gray-400">
+
+        <i class="fa-solid fa-rectangle-ad mr-1"></i>
+        Ad
+
+    </button>
+
+</div>
+        <script>
+
+(function () {
+
+    const card = document.getElementById("ads-card");
+    const closeBtn = document.getElementById("ads-close");
+    const showBtn = document.getElementById("ads-show");
+
+    const link = document.getElementById("ads-link");
+    const image = document.getElementById("ads-image");
+    const badge = document.getElementById("ads-badge");
+    const title = document.getElementById("ads-title");
+    const description = document.getElementById("ads-description");
+    const button = document.getElementById("ads-button");
+    const adId = document.getElementById("ads-id");
+    const progress = document.getElementById("ads-progress");
+
+    if (!card || !ads.length) return;
+
+    /* 30 seconds */
+    const ROTATION_TIME = 30000;
+
+    let currentIndex =
+        Math.floor(Math.random() * ads.length);
+
+    let rotationTimer = null;
+    let progressTimer = null;
+
+
+    /* ================= RENDER ================= */
+
+    function renderAd() {
+
+        const ad = ads[currentIndex];
+
+        image.src = ad.image;
+        image.alt = ad.title;
+
+        badge.textContent = ad.badge;
+        title.textContent = ad.title;
+        description.textContent = ad.description;
+
+        adId.textContent = ad.id;
+
+        button.innerHTML =
+            `${ad.button}
+            <i class="fa-solid fa-arrow-right text-[9px]"></i>`;
+
+        link.href = ad.url;
+
+
+        /* Animation */
+
+        card.classList.remove("ads-enter");
+
+        void card.offsetWidth;
+
+        card.classList.add("ads-enter");
+
+
+        startProgress();
+        startRotation();
+    }
+
+
+    /* ================= ROTATION ================= */
+
+    function startRotation() {
+
+        clearTimeout(rotationTimer);
+
+        rotationTimer = setTimeout(function () {
+
+            currentIndex =
+                (currentIndex + 1) % ads.length;
+
+            renderAd();
+
+        }, ROTATION_TIME);
+    }
+
+
+    /* ================= PROGRESS ================= */
+
+    function startProgress() {
+
+        clearInterval(progressTimer);
+
+        progress.style.transition = "none";
+        progress.style.width = "0%";
+
+        requestAnimationFrame(function () {
+
+            requestAnimationFrame(function () {
+
+                progress.style.transition =
+                    `width ${ROTATION_TIME}ms linear`;
+
+                progress.style.width = "100%";
+
+            });
+
+        });
+    }
+
+
+    /* ================= CLOSE ================= */
+
+    closeBtn.addEventListener("click", function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        card.classList.add("hidden");
+
+        showBtn.classList.remove("hidden");
+
+        clearTimeout(rotationTimer);
+        clearInterval(progressTimer);
+
+        localStorage.setItem(
+            "premium-ad-closed",
+            "true"
+        );
+
+    });
+
+
+    /* ================= SHOW ================= */
+
+    showBtn.addEventListener("click", function () {
+
+        card.classList.remove("hidden");
+
+        showBtn.classList.add("hidden");
+
+        localStorage.removeItem(
+            "premium-ad-closed"
+        );
+
+        renderAd();
+
+    });
+
+
+    /* ================= INITIAL ================= */
+
+    if (
+        localStorage.getItem(
+            "premium-ad-closed"
+        ) === "true"
+    ) {
+
+        card.classList.add("hidden");
+
+        showBtn.classList.remove("hidden");
+
+    } else {
+
+        renderAd();
+
+    }
+
+})();
+
+</script>
+        <style>
+
+.ads-enter {
+    animation: adsEnter .35s ease-out;
+}
+
+@keyframes adsEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+</style>
+        <script>
+
+const ads = [
+
+    {
+        id: "ads-1",
+        badge: "Featured",
+        title: "Discover Something New",
+        description: "Explore our latest digital products, apps and useful services.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80",
+        button: "Explore Now",
+        url: "#"
+    },
+
+    {
+        id: "ads-2",
+        badge: "Special",
+        title: "Premium Digital Collection",
+        description: "Find useful tools, apps and digital resources in one place.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80",
+        button: "View Collection",
+        url: "#"
+    },
+
+    {
+        id: "ads-3",
+        badge: "New",
+        title: "Latest Apps & Tools",
+        description: "Discover trending apps and powerful tools for your everyday needs.",
+        image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=500&q=80",
+        button: "Discover",
+        url: "#"
+    },
+
+    {
+        id: "ads-4",
+        badge: "Offer",
+        title: "Exclusive Digital Deals",
+        description: "Check out selected deals and offers available right now.",
+        image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=500&q=80",
+        button: "Check Offer",
+        url: "#"
+    },
+
+    {
+        id: "ads-5",
+        badge: "Popular",
+        title: "Top Picks For You",
+        description: "Browse popular products and services selected for our visitors.",
+        image: "https://images.unsplash.com/photo-1556742111-a301076d9d18?auto=format&fit=crop&w=500&q=80",
+        button: "See More",
+        url: "#"
+    },
+
+    {
+        id: "ads-6",
+        badge: "Trending",
+        title: "Trending Digital Products",
+        description: "Explore what's currently popular in the digital world.",
+        image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=500&q=80",
+        button: "Explore",
+        url: "#"
+    },
+
+    {
+        id: "ads-7",
+        badge: "Recommended",
+        title: "Recommended For You",
+        description: "Discover useful products and services picked for you.",
+        image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=500&q=80",
+        button: "View Now",
+        url: "#"
+    },
+
+    {
+        id: "ads-8",
+        badge: "Featured",
+        title: "Upgrade Your Digital Experience",
+        description: "Discover premium solutions designed for modern users.",
+        image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=500&q=80",
+        button: "Get Started",
+        url: "#"
+    },
+
+    {
+        id: "ads-9",
+        badge: "Deal",
+        title: "Special Deal Available",
+        description: "Don't miss this limited digital offer.",
+        image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=500&q=80",
+        button: "View Deal",
+        url: "#"
+    },
+
+    {
+        id: "ads-10",
+        badge: "Latest",
+        title: "Explore New Services",
+        description: "Find new services, apps and digital resources.",
+        image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=80",
+        button: "Explore Now",
+        url: "#"
+    },
+
+    {
+        id: "ads-11",
+        badge: "Popular",
+        title: "Best Digital Picks",
+        description: "Our selection of useful and popular digital products.",
+        image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=500&q=80",
+        button: "See Picks",
+        url: "#"
+    },
+
+    {
+        id: "ads-12",
+        badge: "New",
+        title: "New Digital Discovery",
+        description: "Discover something useful today.",
+        image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=500&q=80",
+        button: "Discover",
+        url: "#"
+    },
+
+    {
+        id: "ads-13",
+        badge: "Special",
+        title: "Premium Offers",
+        description: "Explore premium offers and digital services.",
+        image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=500&q=80",
+        button: "Explore Offer",
+        url: "#"
+    },
+
+    {
+        id: "ads-14",
+        badge: "Featured",
+        title: "Your Digital Marketplace",
+        description: "Explore apps, tools, products and more.",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80",
+        button: "Open Store",
+        url: "#"
+    },
+
+    {
+        id: "ads-15",
+        badge: "Recommended",
+        title: "Explore More",
+        description: "Find more useful digital products and services.",
+        image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=500&q=80",
+        button: "Explore",
+        url: "#"
+    }
+
+];
+
+</script>
 
         <!-- =========================================
      PREMIUM FOOTER
