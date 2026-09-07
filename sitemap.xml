@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/explore</loc></url>
+  <url><loc>https://example.com/category/apps</loc></url>
+  <url><loc>https://example.com/category/games</loc></url>
+  <url><loc>https://example.com/category/software</loc></url>
+  <url><loc>https://example.com/category/ai-tools</loc></url>
+  <url><loc>https://example.com/category/banks</loc></url>
+  <url><loc>https://example.com/category/credit-cards</loc></url>
+  <url><loc>https://example.com/category/loans</loc></url>
+  <url><loc>https://example.com/category/investments</loc></url>
+  <url><loc>https://example.com/category/insurance</loc></url>
+  <url><loc>https://example.com/category/shopping</loc></url>
+  <url><loc>https://example.com/category/deals</loc></url>
+  <url><loc>https://example.com/category/services</loc></url>
+  <url><loc>https://example.com/category/templates</loc></url>
+  <url><loc>https://example.com/category/ebooks</loc></url>
+</urlset>
